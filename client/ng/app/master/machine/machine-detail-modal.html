@@ -1,0 +1,77 @@
+<div class="modal-header">
+    <h1 id="modalViewTaskLabel" class="modal-title font-thin h3"> รายละเอียดเครื่องสแกน </h1>
+    </h5>
+    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body p-3 p-lg-4">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="row form-group">
+                <label class="control-label col-md-3" for="ng-group">Site Name</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="item.SiteName" required placeholder="Site Name" maxlength="50">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label class="control-label col-md-3" for="ng-group">ชื่อเครื่อง</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="item.MachineName" required
+                        placeholder="ชื่อเครื่อง" maxlength="50">
+                </div>
+            </div>
+
+
+            <div class="row form-group">
+                <label class="control-label col-md-3" for="ng-group">IP Address</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="item.IP" required
+                        placeholder="IP Address" maxlength="50">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label class="control-label col-md-3" for="ng-group">Floor No.</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="item.FloorNo"  
+                        placeholder="Floor No." maxlength="50">
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-md-3" for="ng-group">Model</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="item.Model"  
+                        placeholder="Model" maxlength="50">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-12"> 
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="IsSync" ng-model="item.IsSync"
+                            ng-true-value="1" ng-false-value="0">
+                        <label class="custom-control-label" for="IsSync">อนุญาตให้ดึงข้อมูลจากเครื่องสแกน</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-12"> 
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="IsActived" ng-model="item.IsActived"
+                            ng-true-value="1" ng-false-value="0">
+                        <label class="custom-control-label" for="IsActived">ใช้งาน</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="save()">บันทึก</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancel()">ยกเลิก</button>
+</div>

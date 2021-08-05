@@ -1,0 +1,74 @@
+<div class="modal-header">
+    <h1 id="modalViewTaskLabel" class="modal-title font-thin h3"> ประกาศข้อความ </h1>
+    </h5>
+    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+
+
+<div class="modal-body p-3 p-lg-4"> 
+
+    
+            <div class="card">
+                <div class="card-body">
+                    <div class="row form-group">
+                        <label class="col-md-3 control-label">กลุ่ม</label>
+                        <div class="col-md-8">
+                             <ui-select ng-model="item.group_id" multiple close-on-select="true" theme="bootstrap">
+                                <ui-select-match placeholder="Please Select">{{$item.group_name}}</ui-select-match>
+                                <ui-select-choices
+                                    repeat="z.group_id as z in userList | filter: $select.search">
+                                    <div ng-bind-html="z.group_name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="row form-group">
+                <label class="col-md-3 control-label">ข้อความ</label>
+                <div class="col-md-8">
+                    <textarea type="text" class="form-control" ng-model="item.text" ng-trim="false" placeholder="ข้อความ" required  maxlength="9999" rows="15"></textarea>
+                    <!-- <span>{{200 - item.text}}</span> -->
+                    <!-- <textarea class="form-control" ng-model="item.text" ng-trim="false" maxlength="1500"></textarea>
+                    <span>{{200 - text.length}} left</span> -->
+                </div>
+            </div>
+
+
+         
+                      <!-- .switcher-control -->
+                      <label class="col-md-3 control-label">ไฟล์</label>
+                      <label class="switcher-control switcher-control-success switcher-control-lg">
+                          <input type="checkbox" class="switcher-input" id="toggleMessage" ng-click="toggle=!toggle" value = 'asd'><span class="switcher-indicator"></span><span class="switcher-label-on"><i class="fas fa-check"></i></span> <span class="switcher-label-off"><i class="fas fa-times"></i></span></label> <!-- /.switcher-control -->
+                      <!-- .switcher-control -->
+                <body ng-app>
+                    <!-- <button class="btn btn-secondary" id="toggleMessage" ng-click="toggle=!toggle"> {{toggle ? 'รูปภาพ' : 'รูปภาพ'}}</button> -->
+                    <div id="box" ng-show="toggle">
+                        <div class="form-group">
+                              <label for="tf3"></label>
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" nv-file-select="" uploader="uploader" id="tf3"> <label class="custom-file-label" for="tf3"></label>
+                              </div>
+                            </div>
+                    </div>
+                    
+                </body>
+
+
+        </div>
+ 
+    </div>
+</div>
+
+<div class="modal-footer"> 
+    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="save()">บันทึก</button> -->
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="uploadFile()">ยืนยัน</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancel()">ยกเลิก</button>
+</div>

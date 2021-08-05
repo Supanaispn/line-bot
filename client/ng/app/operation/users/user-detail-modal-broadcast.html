@@ -1,0 +1,58 @@
+<div class="modal-header">
+    <h1 id="modalViewTaskLabel" class="modal-title font-thin h3"> Broadcast BY User : {{item.user_alias}} </h1>
+    </h5>
+    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body p-3 p-lg-4"> 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row form-group">
+                <label class="col-md-3 control-label">รหัสผู้ใช้</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="item.user_id" required placeholder="User Name"
+                      required  maxlength="50" disabled>
+                </div>
+            </div>            
+            <div class="row form-group">
+                <label class="col-md-3 control-label">หัวเรื่อง</label>
+                <div class="col-md-8">
+                    
+                    <input type="text" class="form-control" ng-model="item.title" required placeholder="หัวเรื่อง"
+                      required  maxlength="50">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label class="col-md-3 control-label">เนื้อหา</label>
+                <div class="col-md-8">
+                    
+                    <!-- <input type="text" class="form-control" required placeholder="เนื้อหา"
+                      required  maxlength="50"> -->
+                      <textarea class="form-control" placeholder="เนื้อหา" ng-model="item.message" rows="3"></textarea>
+                </div>
+            </div>
+
+
+
+            <!-- <div class="row form-group">
+                <div class="col-md-3">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="active" ng-model="item.active"
+                            ng-true-value="1" ng-false-value="0">
+                        <label class="custom-control-label" for="active">ใช้งาน</label>
+                    </div>
+                </div>
+            </div> -->
+            
+        </div>
+ 
+    </div>
+</div>
+
+<div class="modal-footer">
+    <!-- <button type="button" class="btn btn-primary" ng-click="save()">บันทึก</button> -->
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="broadcast()">ประกาศข้อความ</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancel()">ยกเลิก</button>
+</div>

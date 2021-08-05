@@ -1,0 +1,74 @@
+<div class="modal-header">
+    <h1 id="modalViewTaskLabel" class="modal-title font-thin h3"> แก้ไขข้อมูล Group Line </h1>
+    </h5>
+    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body p-3 p-lg-4"> 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row form-group">
+                <label class="col-md-3 control-label">Group ID</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="item.group_id" required placeholder="Group ID"
+                      required  maxlength="50" disabled>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-md-3 control-label">Group Alias</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="item.group_alias" required placeholder="Group Alias"
+                      required  maxlength="50">
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-md-3 control-label">Site Code</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="item.site_code"
+                    placeholder="Site Code">
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-md-3 control-label">Customer Code</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="item.customer_code"
+                    placeholder="Customer Code">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-3">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="active" ng-model="item.active"
+                            ng-true-value="1" ng-false-value="0">
+                        <label class="custom-control-label" for="active">ใช้งาน</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row form-group">
+                        <label class="col-md-3 control-label">CS Acceasasasss</label>
+                        <div class="col-md-8">
+                             <ui-select ng-model="item.cs_access" multiple close-on-select="false" theme="bootstrap">
+                                <ui-select-match placeholder="Please Select">{{$item.fullname}}</ui-select-match>
+                                <ui-select-choices
+                                    repeat="z.user_id as z in userList | filter: $select.search">
+                                    <div ng-bind-html="z.username | highlight: $select.search"></div>
+                                    <small>{{z.fullname}}</small>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer"> 
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="save()">บันทึก</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancel()">ยกเลิก</button>
+</div>

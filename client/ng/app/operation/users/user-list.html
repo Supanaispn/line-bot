@@ -1,0 +1,77 @@
+<div ng-controller="UserListCtrl" ng-init="app.hideAside = false">
+    <div class="bg-light lter b-b wrapper-md">
+        <button class="btn btn-dark pull-right" ng-click="gotoPage('')"> เพิ่มใหม่ </button>
+        <h1 class="m-n font-thin h3">{{page_title}} ({{record_totals}})</h1>
+    </div>
+
+    <div class="wrapper-sm">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="col-md-12">
+                    <form class="form-horizontal">
+
+                        <div class="form-group ">
+                            <div class="col-md-2">
+                                <label>ชื่อ-นามสกุล</label>
+                                <input type="text" class="form-control" ng-model="form.fullname"
+                                    placeholder="ชื่อ-นามสกุล">
+                            </div>
+                            <div class="col-md-2">
+                                <label>อีเมล์</label>
+                                <input type="text" class="form-control" ng-model="form.email"
+                                    placeholder="อีเมล์">
+                            </div>
+
+                            <div class="col-md-2">
+                                <label>ประเภท</label>
+                                <ui-select ng-model="form.is_admin" theme="bootstrap" ng-change="search()">
+                                    <ui-select-match allow-clear placeholder="Please Select">
+                                        {{$select.selected.type_name}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="t.type_value as t in type | filter: $select.search">
+                                        <div ng-bind-html="t.type_name | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="col-md-2">
+                                <label>สถานะ</label>
+                                <ui-select ng-model="form.active" theme="bootstrap" ng-change="search()">
+                                    <ui-select-match allow-clear placeholder="Please Select">
+                                        {{$select.selected.status_name}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="s.status_value as s in status | filter: $select.search">
+                                        <div ng-bind-html="s.status_name | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="col-md-1 text-right" style="padding-top:28px">
+                                <button class="btn btn-info pull-left" ng-click="search()">
+                                    ค้นหา
+                                </button>
+                                
+                            </div>
+                            <!-- <button class="btn  btn-dark pull-right" ng-click="gotobroadcast('')">Broadcast All</button> -->
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="table-responsive" style="padding:5px">
+                    <div ui-grid="gridOptions" set-grid-height="{{gridHeight}}" ui-grid-selection ui-grid-pagination
+                        ui-grid-move-columns class="grid">
+                        <div class="watermark" ng-show="!gridOptions.data.length">ไม่มีข้อมูล</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="user-detail-modal.html">
+    <div ng-include="'ng/app/operation/users/user-detail-modal.html'"></div>
+</script>
+
+<script type="text/ng-template" id="user-detail-modal-broadcast.html">
+    <div ng-include="'ng/app/operation/users/user-detail-modal-broadcast.html'"></div>
+</script>

@@ -1,0 +1,74 @@
+<div class="modal-header">
+    <h1 id="modalViewTaskLabel" class="modal-title font-thin h3"> รายละเอียดข้อมูลพนักงาน HRIS</h1>
+    </h5>
+    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body p-3 p-lg-4">
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="row form-group">
+                <label class="control-label col-md-2" for="ng-group">Company</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" ng-model="item.Company" disabled>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label class="control-label col-md-2" for="ng-group">Emp. Code</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" ng-model="item.EmpCode" disabled>
+                </div>
+                <label class="control-label col-md-2" for="ng-group">ชื่อ-นามสกุล</label>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" ng-model="item.Fullname" disabled>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+
+        <div class="table-responsive" style="padding:5px">
+            <table class="table table-striped table-border bg-white-only b-a">
+                <thead>
+                    <tr>
+                        <th width="40%">Machine Name</th>
+                        <th width="15%">Floor No.</th>
+                        <th width="20%" style="text-align: center;">IP</th>
+                        <th width="15%" style="text-align: center;">User ID</th>
+                        <th width="10%" style="text-align: center;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in mappinglist">
+                        <td><strong>{{ item.MachineName }}</strong></td>
+                        <td>{{ item.FloorNo }}</td>
+                        <td style="text-align: center;">{{ item.IP}}</td>
+                        <td style="text-align: center;">
+                            {{item.userId}}
+                        </td>
+                        <td style="text-align: center;">
+                            <button type="button" class="btn btn-default btn-xs" ng-click="removeMapping(item)">
+                                Remove
+                            </button>
+                        </td>
+                    </tr>
+                    <tr ng-show="mappinglist.length == 0">
+                        <td colspan="5">ยังไม่มีการ mapping ข้อมูล</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <!-- <button type="button" class="btn btn-primary" ng-click="save()">บันทึก</button> -->
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancel()">ยกเลิก</button>
+</div>

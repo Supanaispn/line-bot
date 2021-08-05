@@ -1,0 +1,74 @@
+<div ng-controller="LineGroupListCtrl" ng-init="app.hideAside = false">
+    <div class="bg-light lter b-b wrapper-md">
+        <!-- <button class="btn  btn-dark pull-right" ng-click="gotoPage('')">เพิ่มใหม่</button> -->
+        <h1 class="m-n font-thin h3">{{page_title}} ({{record_totals}})</h1>
+
+    </div>
+    
+    <div class="wrapper-sm">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="col-md-12">
+                    <form class="form-horizontal">
+
+                        <div class="form-group ">
+                            <div class="col-md-2">
+                                <label>Group ID</label>
+                                <input type="text" class="form-control" ng-model="form.group_id"
+                                    placeholder="Group ID">
+                            </div>
+                            <div class="col-md-2">
+                                <label>Group Alias</label>
+                                <input type="text" class="form-control" ng-model="form.group_alias"
+                                    placeholder="Group Alias">
+                            </div>
+                            <div class="col-md-2">
+                                <label>Site Code</label>
+                                <input type="text" class="form-control" ng-model="form.site_code"
+                                    placeholder="Site Code">
+                            </div>
+                            <div class="col-md-2">
+                                <label>Customer Code</label>
+                                <input type="text" class="form-control" ng-model="form.customer_code"
+                                    placeholder="Customer Code">
+                            </div>
+
+                            <div class="col-md-2">
+                                <label>สถานะ</label>
+                                <ui-select ng-model="form.active" theme="bootstrap" ng-change="search()">
+                                    <ui-select-match allow-clear placeholder="Please Select">
+                                        {{$select.selected.status_name}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="s.status_value as s in status | filter: $select.search">
+                                        <div ng-bind-html="s.status_name | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="col-md-1 text-right" style="padding-top:28px">
+                                <button class="btn btn-info pull-left" ng-click="search()">
+                                    ค้นหา
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="table-responsive" style="padding:5px">
+                    <div ui-grid="gridOptions" set-grid-height="{{gridHeight}}" ui-grid-selection ui-grid-pagination
+                        ui-grid-move-columns class="grid">
+                        <div class="watermark" ng-show="!gridOptions.data.length">ไม่มีข้อมูล</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="line-group-modal.html">
+    <div ng-include="'ng/app/operation/line_group/line-group-modal.html'"></div>
+</script>
+<script type="text/ng-template" id="edit-modal.html">
+    <div ng-include="'ng/app/operation/line_group/edit-modal.html'"></div>
+</script>

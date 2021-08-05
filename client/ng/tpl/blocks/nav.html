@@ -1,0 +1,451 @@
+<!-- list -->
+<ul class="nav">
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span>Main Menu</span>
+    </li>
+
+    <li  ng-show="isCheckStatus">
+        <a ui-sref="app.check-status" ui-sref-opts="{reload:true}">
+            <i class="glyphicon glyphicon-tasks text-primary-lter"></i>
+            <span>Check Status</span>
+        </a>
+    </li>
+
+    <li  ng-show="isDashboardActivity">
+        <a ui-sref="app.dashboardActivity">
+            <i class="fa fa-bar-chart text-success-lter"></i>
+            <span>Dashboard Activity</span>
+        </a>
+    </li>
+
+    <li ng-show="isGroupGateIn">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="fa fa-automobile icon text-info"></i>
+            <span class="font-bold">Gate In</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>Gate In</span>
+                </a>
+            </li>
+            <!-- <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                    <span>Pre Gate In</span>
+                </li> -->
+            <li ui-sref-active="active" ng-show="isGITrailer">
+                <a ui-sref="app.gate-in-trailer">
+                    <!-- <i class="fa fa-truck icon text-warning"></i> -->
+                    <span>Pre-Gate In : Trailer</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isGIContainer">
+                <a ui-sref="app.gate-in-container">
+                    <!-- <i class="fa fa-truck icon text-warning"></i> -->
+                    <span>Pre-Gate In : Container</span>
+                </a>
+            </li>
+            <!-- <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                        <span>Gate In</span>
+                    </li> -->
+            <li ui-sref-active="active" ng-show="isGISelfDrive">
+                <a ui-sref="app.gate-in-self-drive">
+                    <!-- <i class="fa fa-truck icon text-info"></i> -->
+                    <span>Gate In : Self Drive </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show="isGroupOperation">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-check icon text-primary"></i>
+            <span class="font-bold">Operation</span>
+        </a>
+
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>Operation</span>
+                </a>
+            </li>
+
+
+            <!-- <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Operation</span>
+            </li> -->
+            <li ui-sref-active="active" ng-show="isConfirmLocation">
+                <a ui-sref="app.confirm-location">
+                    <!-- <i class="glyphicon glyphicon-envelope icon text-info-lter"></i> -->
+                    <span>Confirm Location</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isRelocation">
+                <a ui-sref="app.re-location">
+                    <!-- <i class="glyphicon glyphicon-envelope icon text-info-lter"></i> -->
+                    <span>Re-Location</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isShippingMark">
+                <a ui-sref="app.shipping-mark">
+                    <!-- <i class="glyphicon glyphicon-envelope icon text-success"></i> -->
+                    <span>Shipping-Mark</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isInspection">
+                <a ui-sref="app.inspection">
+                    <!-- <i class="glyphicon glyphicon-edit icon text-success"></i> -->
+                    <span>Inspection</span>
+                </a>
+            </li>
+            <!-- <li ui-sref-active="active">
+                <a ui-sref="app.job-activity">
+                    <i class="fa fa-truck icon text-info"></i>
+                    <span class="font-bold">Job Activity</span>
+                </a>
+            </li> -->
+            <li ui-sref-active="active" ng-show="isActivityList">
+                <a ui-sref="app.activity-vin">
+                    <!-- <i class="fa fa-calendar icon text-primary"></i> -->
+                    <span>Activity Lists</span>
+                </a>
+            </li>
+
+
+
+        </ul>
+    </li>
+
+    <li ng-show="isGroupGateOut">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="fa fa-truck icon text-success"></i>
+            <span class="font-bold">Gate Out</span>
+        </a>
+        <ul class="nav nav-sub dk">
+
+            <!-- <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Gate Out</span>
+            </li> -->
+            <li ui-sref-active="active" ng-show="isGOSelfDrive">
+                <a ui-sref="app.gate-out-self-drive">
+                    <!-- <i class="fa fa-truck icon text-info"></i> -->
+                    <span>Gate Out : Self Drive </span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isGOTrailer">
+                <a ui-sref="app.gate-out-trailer">
+                    <!-- <i class="fa fa-truck icon text-info"></i> -->
+                    <span> Gate Out : Trailer</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isGOContainer">
+                <a ui-sref="app.gate-out-container">
+                    <!-- <i class="fa fa-truck icon text-info"></i> -->
+                    <span> Gate Out : Container</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show="isGroupCSOperation">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-th-large icon text-danger"></i>
+            <span class="font-bold">CS Operation</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active" ng-show="isImportActivity">
+                <a ui-sref="app.masters.import-activity">
+                    <i class="fa fa-list-ol text-info"></i>
+                    <span>Import Activity</span>
+                </a>
+            </li>
+
+            <li class="nav-sub-header" ng-show="isDeliveryOrder" ng-hide="true">
+                <a href>
+                    <span>Delivery Order</span>
+                </a>
+            </li>
+
+
+            <li ui-sref-active="active" ng-show="isCreateOrder" ng-hide="true">
+                <a ui-sref="app.order.create-order">
+                    <i class="glyphicon glyphicon-plus-sign text-info"></i>
+                    <span>Create Order</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isConfirmOrder" ng-hide="true">
+                <a ui-sref="app.order.confirm-order">
+                    <i class="glyphicon glyphicon-check text-info"></i>
+                    <span>Confirm Order</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isPrintShippingMark">
+                <a ui-sref="app.order.print-shipping-mark">
+                    <i class="glyphicon glyphicon-print text-info"></i>
+                    <span>Print Shipping Mark</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show="isGroupTripOperation">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-th-large icon text-danger"></i>
+            <span class="font-bold">Trip Operation</span>
+        </a>
+        <ul class="nav nav-sub dk">
+
+            <li ui-sref-active="active" ng-show="isCustomerOrder">
+                <a ui-sref="app.trip.customer-order">
+                    <i class="glyphicon glyphicon-th-list text-info"></i>
+                    <span>Customer Order</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isCreateTrip">
+                <a ui-sref="app.trip.create-trip">
+                    <i class="glyphicon glyphicon-plus-sign text-info"></i>
+                    <span>Create Trip</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isConfirmTrip">
+                <a ui-sref="app.trip.confirm-trip">
+                    <i class="glyphicon glyphicon-check text-info"></i>
+                    <span>Confirm Trip</span>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+
+    <li ng-show="isGroupMaster">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-list-alt icon text-default"></i>
+            <span class="font-bold">Master</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>Master</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isBrand">
+                <a ui-sref="app.masters.brand">
+                    <i class="fa fa-sitemap text-success"></i>
+                    <span>Brand</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isVehicle">
+                <a ui-sref="app.masters.vehicle">
+                    <i class="fa fa-automobile text-info"></i>
+                    <span>Vehicle</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isVehicleAlertMessage">
+                <a ui-sref="app.masters.vehiclealert">
+                    <i class="fa fa-automobile text-danger"></i>
+                    <span>Vehicle Alert Message</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isDriver">
+                <a ui-sref="app.masters.driver">
+                    <i class="fa fa-user text-info"></i>
+                    <span>Driver</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isTrailerCompany">
+                <a ui-sref="app.masters.trailercompany">
+                    <i class="fa fa-truck text-primary"></i>
+                    <span>Trailer Company</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isTrailer">
+                <a ui-sref="app.masters.trailer">
+                    <i class="fa fa-truck text-info"></i>
+                    <span>Trailer</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isNgGroup">
+                <a ui-sref="app.masters.nggroup">
+                    <i class="glyphicon glyphicon-list-alt text-info"></i>
+                    <span>NG Group</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isNgCode">
+                <a ui-sref="app.masters.ngcode">
+                    <i class="fa fa-wrench text-info"></i>
+                    <span>NG Code</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show="isGroupUserManagement">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="fa fa-users  icon text-default"></i>
+            <span class="font-bold">User Management</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>System Manage</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isPage">
+                <a ui-sref="app.page.list">
+                    <i class="fa fa-desktop text-default"></i>
+                    <span>Page</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isRole">
+                <a ui-sref="app.role.list">
+                    <i class="fa fa-check-square-o text-info"></i>
+                    <span>Role</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active" ng-show="isUser">
+                <a ui-sref="app.user.list">
+                    <i class="fa fa-users text-info"></i>
+                    <span>User</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </li>
+
+    <li ng-show="isGroupManageLocation">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-th-large icon text-default"></i>
+            <span class="font-bold">Manage Location</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>Location Management</span>
+                </a>
+            </li>
+
+            
+            <li ui-sref-active="active" ng-show="isZone">
+                <a ui-sref="app.masters.zone-group">
+                    <i class=" fa fa-columns text-danger"></i>
+                    <span>Zone Group</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isZone">
+                <a ui-sref="app.masters.zone">
+                    <i class=" fa fa-columns text-danger"></i>
+                    <span>Zone</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isLane">
+                <a ui-sref="app.masters.lane">
+                    <i class="fa fa-th text-default"></i>
+                    <span>Lane</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-show="isLocation">
+                <a ui-sref="app.masters.location">
+                    <i class=" fa fa-fa fa-map-marker text-success"></i>
+                    <span>Location</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </li>
+
+    <li ng-show="isGroupAdminTools">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-wrench icon text-default"></i>
+            <span class="font-bold">Admin Tools</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>Admin Tools</span>
+                </a>
+            </li>
+            <li ng-show="isReportCenter">
+                <a ui-sref="app.report-center.list">
+                    <i class="fa fa-file-excel-o icon text-success-lter"></i>
+                    <span>Report Center</span>
+                </a>
+            </li>
+            <li ng-show="isImportCenter">
+                <a ui-sref="app.import-center.list">
+                    <i class="fa fa-upload icon text-info-lter"></i>
+                    <span>Import Center</span>
+                </a>
+            </li>
+            <li ng-show="isCreateView">
+                <a ui-sref="app.masters.create-view">
+                    <i class="fa fa-repeat icon text-primary-lter"></i>
+                    <span>Create View</span>
+                </a>
+            </li>
+            <li ng-show="isSysConfig">
+                <a ui-sref="app.sys-config">
+                    <i class="fa fa-cog icon text-default-lter"></i>
+                    <span>System Config</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <a ui-sref="app.confirmation-goods"  ng-show="isConfirmGoods">
+            <i class="fa fa-check-square-o icon text-info-lter"></i>
+            <span>Confirmation Goods</span>
+        </a>
+    </li>
+
+</ul>
+<!-- / list -->

@@ -1,0 +1,182 @@
+<div class="modal-header">
+    <h1 id="modalViewTaskLabel" class="modal-title font-thin h3"> Chat </h1>
+
+    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body" style="margin-bottom: 5px;">
+    <div class="row">
+        <ul class="conversation-list">
+            <div ng-repeat="chat in chatList">
+
+                <li class="conversation-inbound" ng-if="chat.outbound == false">
+                    <div class="conversation-avatar">
+                        <a href="#" class="user-avatar"><img ng-src="{{chat.pictureUrl}}" alt=""> </a>
+                    </div>
+
+                    <div class="conversation-message">
+                        <div class="conversation-meta"> {{chat.user_name}} · {{chat.text_date}} </div>
+
+                        <!-- TEXT -->
+                        <div class="conversation-message-text" ng-if="chat.message_type == 'text'" ng-bind-html="linkDetect(chat.message_text)"> {{chat.message_text}} </div>
+                        <!-- STICKER -->
+                        <div class="conversation-message-text" ng-if="chat.message_type == 'sticker'"> [สติ๊กเกอร์] </div>
+                        <!-- IMAGE -->
+                        <div class="conversation-message-text" ng-if="chat.message_type == 'image'">
+                            <a href="downloads/{{chat.message_id}}.jpg" target="_blank">
+                                <img src="downloads/{{chat.message_id}}-preview.jpg" alt="{{chat.message_id}}-preview.jpg">
+                            </a>
+                        </div>
+                        <!-- VIDEO -->
+                        <div class="conversation-message-text" ng-if="chat.message_type == 'video'">
+                            <a href="downloads/{{chat.message_id}}.mp4" target="_blank">
+                                <img width="240px" src="downloads/{{chat.message_id}}-preview.jpg" alt="{{chat.message_id}}-preview.jpg">
+                            </a>
+                        </div>
+                        <!-- FILE -->
+                        <div class="conversation-message-text" ng-if="chat.message_type == 'file'">
+                            <a href="downloads/{{chat.message_id}}{{chat.ext_file}}" target="_blank"> {{chat.message_id}}{{chat.ext_file}} </a>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li class="conversation-outbound" ng-if="chat.outbound == true">
+                    <!-- <div class="conversation-actions dropdown">
+                        <button class="btn btn-sm btn-icon btn-light" data-toggle="dropdown"><i
+                                class="fa fa-fw fa-ellipsis-h"></i></button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-arrow ml-n1"></div><button type="button" class="dropdown-item">Copy
+                                text</button> <button type="button" class="dropdown-item">Edit</button> <button
+                                type="button" class="dropdown-item">Reply</button> <button type="button"
+                                class="dropdown-item">Remove</button>
+                        </div>
+                    </div> -->
+                    <div class="conversation-message">
+                        <div class="conversation-meta"> {{chat.admin_name}} · {{chat.text_date_admin}} </div>
+
+                        <!-- TEXT -->
+                        <div class="conversation-message-text" ng-if="chat.message_type == 'text'" ng-bind-html="linkDetect(chat.message_text)"> {{chat.message_text}} </div>
+                        <!-- STICKER -->
+                        <div class="conversation-message-text" ng-if="chat.message_type == 'sticker'"> [สติ๊กเกอร์] </div>
+                        <!-- IMAGE -->
+                        <div class="conversation-message-text" ng-if="chat.message_type == 'image'">
+                            <a href="FileUploads/{{chat.message_id}}.jpg" target="_blank">
+                                <img src="FileUploads/{{chat.message_id}}-preview.jpg" alt="{{chat.message_id}}-preview.jpg">
+                            </a>
+                        </div>
+                        <!-- VIDEO -->
+                        <div class="conversation-message-text" ng-if="chat.message_type == 'video'">
+                            <a href="FileUploads/{{chat.message_id}}.mp4" target="_blank">
+                                <img src="FileUploads/{{chat.message_id}}-preview.jpg" alt="{{chat.message_id}}-preview.jpg">
+                            </a>
+                        </div>
+                        <!-- FILE -->
+                        <div class="conversation-message-text" ng-if="chat.message_type == 'file'">
+                            <a href="downloads/{{chat.message_id}}{{chat.ext_file}}" target="_blank"> {{chat.message_id}}{{chat.ext_file}} </a>
+                        </div>
+
+                    </div>
+                </li> 
+            </div>
+        </ul>
+    </div>
+</div>
+
+<!-- uploadfile -->
+<div class="" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+    <div class="filters-upload"  ng-if="uploader.queue.length > 0">
+        <div ng-repeat="(key, item) in uploader.queue"> {{ item.file.name }} ({{ item.file.size/1024/1024|number:2 }} MB)
+            <button type="button" ng-click="item.remove()" class="cancel-upload">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="progress progress-sm m-b-none m-t-xs">
+                <div class="progress-bar bg-info" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="modal-footer">
+        <div class="btn btn-light btn-icon fileinput-button col-md-1">
+            <i class="fa fa-paperclip"></i>
+            <input type="file" nv-file-select="" uploader="uploader">
+        </div>
+        <div class="media-body">
+            <textarea class="form-control border-0 shadow-none" style="resize: none;" name="messageText" placeholder="Type a message"
+            ng-model="form.message_text" enter-submit="chatMessage('')">
+            </textarea>
+        </div>
+        <div>
+            <button type="button" class="btn btn-light btn-icon" ng-if="uploader.queue.length == 0"
+            ng-click="chatMessage('')">
+            <i class="far fa-paper-plane"></i>
+            </button>
+            <button type="button" class="btn btn-light btn-icon" ng-if="uploader.queue.length > 0"
+            ng-click="uploadFile('')">
+            <i class="far fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+  
+</div>
+
+<style>
+    .filters-upload {
+        overflow-y: auto;
+        height: 50px;
+        width: 100%;
+        padding: 10px;
+        z-index: 1;
+        position: absolute;
+        bottom: 70px;
+        background-color: #ededed;
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+        color: #000000;
+        font-weight: bold;
+    }
+    .filters-upload::-webkit-scrollbar { 
+      display: none; 
+    } 
+    .cancel-upload {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #000000;
+        text-shadow: none;
+        opacity: .5;
+        margin-top: 0px;
+        background-color: transparent;
+        border: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    .conversation-outbound .conversation-message .conversation-message-text {
+        background-color: #E0FBF3;
+        color: #363642;
+    }
+</style>
+
+
+
+
+
+
+<!-- <div ng-include="'ng/app/operation/line_group/file-upload.html'" ng-repeat="dataGroup in item"></div> -->
+
+<!--
+    <div class="modal-footer">
+        <div class="btn btn-light btn-icon fileinput-button col-md-1">
+            <input type="file" id="pm-attachment" name="pmAttachment[]" ng-file-select multiple>
+        </div>
+        <div class="media-body">
+            <input type="text" class="form-control border-0 shadow-none" name="messageText" placeholder="Type a message"
+                ng-model="form.message_text" ng-enter="chatMessage(form.message_text)">
+        </div>
+        <div>
+            <button type="button" class="btn btn-light btn-icon"><i class="far fa-smile"></i></button>
+        </div>
+    </div>
+-->
