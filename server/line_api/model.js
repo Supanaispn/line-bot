@@ -454,23 +454,23 @@ var _model = {
 
       await client.replyMessage(body.token, {
         type: "text",
-        text: "รอสักครู่น๊า",
+        text: "กำลังตรวจสอบ...",
       });
 
-      let response = await axios.get("http://localhost:4555/mea");
+      let response = await axios.get("http://localhost:3333/mea");
       let result = response.data.data;
 
       // // const knex = require("knex")(configs);
 
       const LINE_BODY = {
         type: "text",
-        text: "ค่าไฟฟ้าเดือนนี้มาแล้วจ้า",
+        text: "ค่าไฟฟ้าเดือนนี้",
       };
 
-      const USER_ID = [
-        "U8da5970f4ec3ae521eee19232943fc83",
-        "Ue2a8d58c521ed174c7b5b40dcac413c1",
-      ];
+      // const USER_ID = [
+      //   "U8da5970f4ec3ae521eee19232943fc83",
+      //   "Ue2a8d58c521ed174c7b5b40dcac413c1",
+      // ];
 
       let res = await client.pushMessage(body.userId, {
         type: "flex",
