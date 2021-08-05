@@ -630,7 +630,7 @@ var _model = {
             };
         }
     },
-    mea: async function (body) {
+    covid: async function (body) {
         try {
             const client = new line.Client(config);
 
