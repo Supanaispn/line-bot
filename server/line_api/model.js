@@ -641,7 +641,8 @@ var _model = {
 
             const LINE_BODY = {
                 type: "text",
-                text: `${result.NewConfirmed} คน`,
+                text: `จำนวนผู้ติดเชื้อ ${result.NewConfirmed} คน
+ล่าสุด ณ ${result.UpdateDate}`,
             };
 
             await client.replyMessage(body.token, LINE_BODY);
