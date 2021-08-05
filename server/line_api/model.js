@@ -537,7 +537,7 @@ var _model = {
                                         contents: [
                                             {
                                                 type: "text",
-                                                text: "ITEMS",
+                                                text: "จำนวน",
                                                 size: "md",
                                                 color: "#555555",
                                             },
@@ -556,7 +556,7 @@ var _model = {
                                         contents: [
                                             {
                                                 type: "text",
-                                                text: "TOTAL",
+                                                text: "จำนวนทั้งสิ้น",
                                                 size: "md",
                                                 color: "#555555",
                                             },
