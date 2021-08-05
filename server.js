@@ -103,6 +103,7 @@ router.get("/mea", async (req, res) => {
         let result = await (async () => {
             const browser = await puppeteer.launch({
                 headless: true,
+                executablePath: "/usr/bin/chromium-browser",
             });
 
             const page = await browser.newPage();
